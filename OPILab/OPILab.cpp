@@ -79,3 +79,26 @@ void VisResult(const pair<Point, Point>& optimalPoints)
     cout << "Оптимальные точки: (" << optimalPoints.first.x << ", " << optimalPoints.first.y << ") и ("
         << optimalPoints.second.x << ", " << optimalPoints.second.y << ")" << endl;
 }
+
+int main()
+{
+    setlocale(LC_ALL, "ru");
+
+    int n;
+    cout << "Введите количество точек: ";
+    cin >> n;
+
+    vector<Point> points = InputPoints(n);
+
+    if (ValidatePoints(points))
+    {
+        auto optimalPoints = Optimize(points);
+        VisResult(optimalPoints);
+    }
+    else
+    {
+        cout << "Некорректные данные точек. Пожалуйста, повторите ввод." << endl;
+    }
+
+    return 0;
+}
