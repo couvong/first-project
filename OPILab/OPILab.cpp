@@ -73,3 +73,9 @@ pair<Point, Point> Optimize(const vector<Point>& points)
 
     return optimalPoints;
 }
+
+void VisResult(const pair<Point, Point>& optimalPoints)
+{
+    cout << "Оптимальные точки: (" << optimalPoints.first.x << ", " << optimalPoints.first.y << ") и ("
+        << optimalPoints.second.x << ", " << optimalPoints.second.y << ")" << endl;
+}
