@@ -42,3 +42,34 @@ int PointOfLine(const Point& point, const pair<double, double>& line)
     else
         return 0;
 }
+
+pair<Point, Point> Optimize(const vector<Point>& points)
+{
+    int n = points.size();
+    int minDifference = n;
+    pair<Point, Point> optimalPoints;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            int difference = 0;
+            auto line = FindLine(points[i], points[j]);
+            for (int k = 0; k < n; k++)
+            {
+                if (k != i && k != j)
+                {
+                    difference += PointOfLine(points[k], line);
+                }
+            }
+
+            if (abs(difference) < minDifference)
+            {
+                minDifference = abs(difference);
+                optimalPoints = { points[i], points[j] };
+            }
+        }
+    }
+
+    return optimalPoints;
+}
